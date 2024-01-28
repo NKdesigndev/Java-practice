@@ -24,5 +24,6 @@ public class userInput{
         int userInput = Integer.parseInt(bf.readLine());
 
         System.out.println("You've Entered: " + userInput);
+        bf.close();
     }
 }
