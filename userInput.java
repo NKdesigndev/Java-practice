@@ -7,7 +7,7 @@ public class userInput{
     public static void main(String[] args) throws IOException{
         System.out.print("Enter the first number: ");
 
-        Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
 
         // Scanner method:
         // int num = sc.nextInt();
