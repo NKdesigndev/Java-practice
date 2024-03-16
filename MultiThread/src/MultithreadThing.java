@@ -1,6 +1,6 @@
 public class MultithreadThing extends Thread{
+    
         @Override
-
         public void run(){
             // Count number to 5
             for(int i = 1; i <=5; i++){
