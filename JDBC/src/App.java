@@ -1,28 +1,40 @@
 import java.sql.*;
 
 public class App {
-    
+
     static final String DB_URL = "jdbc:mysql://localhost:3306/demo";
     static final String USER = "root";
     static final String PASS = "";
     static final String QUERY = "SELECT id, first, last, age FROM Employees";
-    
-    public static void main(String[] args) throws Exception {
-    //    Class.forName("com.mysql.jdbc.Driver");
-      // Open a connection
-      try(Connection conn = DriverManager.getConnection(DB_URL, "root", "");
-         Statement stmt = conn.createStatement();
-         ResultSet rs = stmt.executeQuery(QUERY);) {
-         // Extract data from result set
-         while (rs.next()) {
-            // Retrieve by column name
-            System.out.print("ID: " + rs.getInt("id"));
-            System.out.print(", Age: " + rs.getInt("age"));
-            System.out.print(", First: " + rs.getString("first"));
-            System.out.println(", Last: " + rs.getString("last"));
-         }
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } 
-   }
+
+    public static void main(String[] args) {
+        try {
+            // Establish connection and execute query
+            executeQuery();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Log the exception
+        }
+    }
+
+    public static void executeQuery() throws ClassNotFoundException, SQLException {
+        // Load MySQL JDBC Driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        // Open a connection using try-with-resources
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(QUERY)) {
+
+            // Process the ResultSet
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int age = rs.getInt("age");
+                String firstName = rs.getString("first");
+                String lastName = rs.getString("last");
+
+                // Output the retrieved data
+                System.out.println("ID: " + id + ", Age: " + age + ", First: " + firstName + ", Last: " + lastName);
+            }
+        }
+    }
 }

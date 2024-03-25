@@ -2,8 +2,7 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\Naveen\\Desktop\\PU Study\\Java Practice\\mysql-connector-j-8.3.0.jar"
+        "lib/**/*.jar"
     ],
     "sqltools.connections": [
         {
