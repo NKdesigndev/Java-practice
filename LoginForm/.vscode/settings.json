@@ -30,6 +30,19 @@
             "name": "testMysql",
             "database": "demo",
             "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "mystore",
+            "database": "mystore",
+            "username": "root",
+            "password": ""
         }
     ]
 }
