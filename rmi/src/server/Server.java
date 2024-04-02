@@ -9,7 +9,7 @@ public class Server {
         try{
 
             // Set hostname for the server using javaProperty
-            System.setProperty("java.rmi.server.hostname","127.0.0.1");
+            System.setProperty("java.rmi.server.hostname","192.168.1.2");
             System.out.println("Server has been started...");
 
             ProductImpl p1 = new ProductImpl("Laptop", "lenovo laptop", 58000.00);
@@ -28,7 +28,7 @@ public class Server {
             // Client will use that name to get the reference of those exported object
 
             // Get the registry to register the object
-            Registry registry = LocateRegistry.getRegistry("127.0.0.1", 9100);
+            Registry registry = LocateRegistry.getRegistry("192.168.1.5", 9100);
 
             registry.rebind("l", stub1);
             registry.rebind("m", stub2);
