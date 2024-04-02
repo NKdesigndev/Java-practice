@@ -5,9 +5,10 @@ import java.rmi.RemoteException;
 
 public interface Product extends Remote {
 
+    // Let us define API 
     public String getName() throws RemoteException;
     public String getDescription() throws RemoteException;
-    public Double getPrice() throws RemoteException;
+    public double getPrice() throws RemoteException;
 
 }
  

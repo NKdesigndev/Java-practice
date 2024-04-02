@@ -1,6 +1,8 @@
 package server;
-import java.rmi.server.*;
-import java.rmi.registry.*;
+// import java.rmi.server.*;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class Server {
     public static void main(String args[]){
@@ -8,6 +10,7 @@ public class Server {
 
             // Set hostname for the server using javaProperty
             System.setProperty("java.rmi.server.hostname","127.0.0.1");
+            System.out.println("Server has been started...");
 
             ProductImpl p1 = new ProductImpl("Laptop", "lenovo laptop", 58000.00);
             ProductImpl p2 = new ProductImpl("Mobile","Google Pixel",40000.00);
@@ -32,6 +35,7 @@ public class Server {
             registry.rebind("c", stub3);
             registry.rebind("b", stub4);
 
+            System.out.println("Exporting and Binding of objects has been completed..");
         }
         catch(Exception e){
             System.out.println("Some server error..." + e);
