@@ -1,15 +1,21 @@
 package server;
 // import java.rmi.server.*;
 import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class Server {
+public class Server extends ProductImpl {
+    public Server(String newName, String newDescription, double newPrice) throws RemoteException {
+        super(newName, newDescription, newPrice);
+        //TODO Auto-generated constructor stub
+    }
+
     public static void main(String args[]){
         try{
 
             // Set hostname for the server using javaProperty
-            System.setProperty("java.rmi.server.hostname","192.168.1.2");
+            System.setProperty("java.rmi.server.hostname","localhost");
             System.out.println("Server has been started...");
 
             ProductImpl p1 = new ProductImpl("Laptop", "lenovo laptop", 58000.00);
@@ -28,7 +34,7 @@ public class Server {
             // Client will use that name to get the reference of those exported object
 
             // Get the registry to register the object
-            Registry registry = LocateRegistry.getRegistry("192.168.1.5", 9100);
+            Registry registry = LocateRegistry.getRegistry("localhost", 9100);
 
             registry.rebind("l", stub1);
             registry.rebind("m", stub2);
