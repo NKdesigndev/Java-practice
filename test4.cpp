@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <unistd.h> // for usleep
+#include <thread> // for std::this_thread::sleep_for
+#include <chrono> // for std::chrono::milliseconds
 
 // Window dimensions
 #define SCREEN_WIDTH 80
@@ -65,7 +66,7 @@ int main() {
         }
 
         // Sleep for a short time to control the animation speed
-        usleep(50000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
     return 0;
